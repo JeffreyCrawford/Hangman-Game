@@ -10,7 +10,7 @@
 
 <body>
     
-    <p>"START GUESSING"</p>
+    <h1>"START GUESSING"</p>
 
     <script type="text/javascript">
     
@@ -31,15 +31,6 @@
         }
 
         
-
-        /* runs through the list of letters in the selected word and prints them to the console */
-        for(i = 0; i < wordSelection.length; i++) {
-            console.log(wordSelection[i])
-        }
-
-        
-
-
         document.onkeyup = function() { 
             /* pulls the keypress */
             var keyPress = String.fromCharCode(event.keyCode).toLowerCase();
@@ -64,7 +55,8 @@
                             tempArray[i] = keyPress;
                             var guessProgress = tempArray.join(" ");
                             console.log(guessProgress);
-                            document.querySelector("p").innerHTML = guessProgress;
+                            document.querySelector("h1").innerHTML = guessProgress;
+                            console.log(tempArray.indexOf("_ "));
                         }
                     }
                 }
@@ -73,6 +65,14 @@
                 }
             }
             else {}
+        }
+
+
+        if (tempArray.indexOf("_ ") != -1) {
+            console.log("KEEP GOING")
+        }
+        else {
+            alert("YOU WIN")
         }
 
     </script>
