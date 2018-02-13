@@ -12,14 +12,84 @@
     
     <script type="text/javascript">
     
-        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
+        var wordList = ["astrophysics", "astronomy", "atom", "beaker", "biochemistry", "biology", "botany", "cell", "chemical", "chemistry", "climate", "climatologist", "control", "cuvette", "data", "datum", "electricity", "electrochemist", "element", "energy", "entomology", "evolution", "experiment", "fact", "flask", "fossil", "funnel", "genetics", "geology", "geophysics", "glassware", "gravity", "herpetology", "hypothesis", "ichthyology", "immunology", "lab", "laboratory", "laws", "lepidoptery", "magnetism", "mass", "matter", "measure", "meteorologist", "meteorology", "microbiologist", "microbiology", "microscope", "mineral", "mineralogy", "molecule", "motion", "observe", "observatory", "organism", "ornithology", "paleontology", "particle", "phase", "physics", "pipette", "radiology", "research", "retort", "scale", "science", "scientist", "seismology", "telescope", "temperature", "theory", "thermometer", "tissue", "variable", "virologist", "volcanology", "volume", "weather", "weigh", "zoology"];
+        var wordSelection = wordList[Math.floor(Math.random()*wordList.length)];
+        var wordLetters = Array.from(wordSelection);
+  
+        console.log(wordSelection);        
+        console.log(wordLetters);
+
+
+        /* runs through the list of letters in the selected word and prints them to the console */
+        for(i = 0; i < wordSelection.length; i++) {
+            console.log(wordSelection[i])
+        };
 
         
+       
+        document.onkeyup = function() { 
+            /* pulls the keypress */
+            var keyPress = String.fromCharCode(event.keyCode).toLowerCase();
+            
+            /* logs the keypress in console */
+            console.log(keyPress);
+
+
+            /* if keypress is in alphabet array, console print ALPHABET, if not do nothing */
+            if (alphabet.indexOf(keyPress) != -1) { 
+                
+                /* if keypress is in wordLetters Array, console print CORRECT GUESS and the letter number, if not print WRONG */
+                if (wordLetters.indexOf(keyPress) != -1 ) {
+                    
+                    console.log("CORRECT GUESS");
+                   
+                    /* runs through the entire array and console prints the index of any matches */
+                    for (i = 0; i < wordLetters.length; i++) {
+                        if (wordLetters[i] === keyPress) {
+                            console.log(i)
+                        }
+                    }
+                }
+                else {
+                    console.log("WRONG")
+                }
+
+            }
+            else {}
+
+
+        }
+
+
+        /* writes _s equal to word length */
+        for(i = 0; i < wordSelection.length; i++) {
+            document.write("_ ");
+
+        }
+    
         
+
+
+   
+
+
+
+
+
+/*         var letterChoice = document.getElementById("letterChoice").id;
+ */        
+        
+/* 
         for(i = 0; i < alphabet.length; i++) {
             console.log(alphabet[i])
 
-        }    
+        }  
+
+            console.log(letterChoice);
+ */
+
+
     </script>
 
 </body>
