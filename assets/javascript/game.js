@@ -19,23 +19,17 @@ var beginGuessProgress = tempArray.join("");
 
 /* I don't understand why the following code isn't displaying when the page is loaded. */
 /* console.log(beginGuessProgress);
-document.getElementById(".display").innerHTML = beginGuessProgress; */
+document.querySelector(".display").innerHTML = beginGuessProgress; */
 
 document.onkeyup = function() { 
     /* pulls the keypress */
     var keyPress = String.fromCharCode(event.keyCode).toLowerCase();
-    
-    /* logs the keypress in console */
-    console.log(keyPress);
-
 
     /* if keypress is in alphabet array, console print ALPHABET, if not do nothing */
     if (alphabet.indexOf(keyPress) != -1) { 
         
         /* if keypress is in wordLetters Array, execute subsequent IF, if not execute ELSE */
         if (wordLetters.indexOf(keyPress) != -1 ) {
-            
-            console.log("CORRECT GUESS");
     
             /* runs through the entire wordLetters array */
             for (i = 0; i < wordLetters.length; i++) {
@@ -43,16 +37,15 @@ document.onkeyup = function() {
                 /* if the keyPress matches any letters, replace that number _ with the keypress */
                 if (wordLetters[i] === keyPress) {
                     tempArray[i] = keyPress;
+
                     /* create a string to display comprised of the tempArray holding _s and correct guesses  */
                     var guessProgress = tempArray.join(" ");
-                    console.log(guessProgress);
+
                     /* displays the above string on the page */
                     document.querySelector(".display").innerHTML = guessProgress;
-                    console.log(tempArray.indexOf("_ "));
-                    /* if there are _s left in the array console print KEEP GOING, if not game ends, alert YOU WIN */
-                    if (tempArray.indexOf("_ ") != -1) {
-                        console.log("KEEP GOING")
-                    }
+
+                    /* if there are _s left in the array do nothing, if not game ends, alert YOU WIN */
+                    if (tempArray.indexOf("_ ") != -1) {                    }
                     else {
                         document.querySelector(".display").innerHTML = guessProgress;
                         numberOfWins++;
@@ -64,22 +57,27 @@ document.onkeyup = function() {
             }
         }
         else {
-            /* if the keypress has already been pushed to the missedLetters array, console print you already guessed that */
-            console.log("WRONG");
-            if (missedLetters.indexOf(keyPress) != -1) {
-            console.log("you already guessed that idiot")
-            }
+            /* if the keypress has already been pushed to the missedLetters array, do nothing */
+
+            if (missedLetters.indexOf(keyPress) != -1) {}
+            
+            /* push the missed letter to the array and increase number of misses */
             else {
                 missedLetters.push(keyPress);
                 numberOfMissed++;
                 document.querySelector(".numberOfMissed").innerHTML = numberOfMissed;
-                if (numberOfMissed < 10) {}
+              
+                /* if number of missed guesses is less than 11, do nothing */
+                if (numberOfMissed < 11) {}
+
+                /* if they lose the game, alert "you lose" and increment the loss counter */
                 else {
                     alert("YOU LOSE");
                     numberOfLosses++;
                     document.querySelector(".numberOfLosses").innerHTML = numberOfLosses;
                 };
             };
+
             var missedDisplay = missedLetters.join(", ");
             document.querySelector(".missed").innerHTML = missedDisplay; 
 
@@ -89,5 +87,6 @@ document.onkeyup = function() {
     else {}
 }
 
-
+/* I missed the parts where it loops back and provides another word as well as the "press any key to begin" at the beginning. I suspect 
+it's something along the lines of a do/while but I'm not sure */
 
