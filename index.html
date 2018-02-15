@@ -5,77 +5,16 @@
     <meta charset="UTF-8">
     <title>Hangman Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <script src="assets/javascript/game.js"></script>
 </head>
 
 <body>
     
-    <h1>"START GUESSING"</p>
+    <h1 class="titletext">HANGMAN</h1>
+    <h1 class="display">START GUESSING</p>
+    <h3 class="missed"></h3>
 
-    <script type="text/javascript">
     
-        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
-        var wordList = ["astrophysics", "astronomy", "atom", "beaker", "biochemistry", "biology", "botany", "cell", "chemical", "chemistry", "climate", "climatologist", "control", "cuvette", "data", "datum", "electricity", "electrochemist", "element", "energy", "entomology", "evolution", "experiment", "fact", "flask", "fossil", "funnel", "genetics", "geology", "geophysics", "glassware", "gravity", "herpetology", "hypothesis", "ichthyology", "immunology", "lab", "laboratory", "laws", "lepidoptery", "magnetism", "mass", "matter", "measure", "meteorologist", "meteorology", "microbiologist", "microbiology", "microscope", "mineral", "mineralogy", "molecule", "motion", "observe", "observatory", "organism", "ornithology", "paleontology", "particle", "phase", "physics", "pipette", "radiology", "research", "retort", "scale", "science", "scientist", "seismology", "telescope", "temperature", "theory", "thermometer", "tissue", "variable", "virologist", "volcanology", "volume", "weather", "weigh", "zoology"];
-        var wordSelection = wordList[Math.floor(Math.random()*wordList.length)];
-        var wordLetters = Array.from(wordSelection);
-        var tempArray = Array(wordSelection.length);
-
-        
-         
-        console.log(wordSelection);        
-        console.log(wordLetters);
-
-        /* inserts _s into tempArray */
-        for(i = 0; i < wordSelection.length; i++) {
-            tempArray[i] = "_ ";
-        }
-
-        
-        document.onkeyup = function() { 
-            /* pulls the keypress */
-            var keyPress = String.fromCharCode(event.keyCode).toLowerCase();
-            
-            /* logs the keypress in console */
-            console.log(keyPress);
-
-
-            /* if keypress is in alphabet array, console print ALPHABET, if not do nothing */
-            if (alphabet.indexOf(keyPress) != -1) { 
-                
-                /* if keypress is in wordLetters Array, console print CORRECT GUESS and the letter number, if not print WRONG */
-                if (wordLetters.indexOf(keyPress) != -1 ) {
-                    
-                    console.log("CORRECT GUESS");
-            
-                    /* runs through the entire wordLetters array */
-                    for (i = 0; i < wordLetters.length; i++) {
-
-                        /* if the keyPress matches any letters, replace that number _ with the keypress */
-                        if (wordLetters[i] === keyPress) {
-                            tempArray[i] = keyPress;
-                            var guessProgress = tempArray.join(" ");
-                            console.log(guessProgress);
-                            document.querySelector("h1").innerHTML = guessProgress;
-                            console.log(tempArray.indexOf("_ "));
-                        }
-                    }
-                }
-                else {
-                    console.log("WRONG")
-                }
-            }
-            else {}
-        }
-
-
-        if (tempArray.indexOf("_ ") != -1) {
-            console.log("KEEP GOING")
-        }
-        else {
-            alert("YOU WIN")
-        }
-
-    </script>
 
 
 </body>
