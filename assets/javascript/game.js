@@ -7,9 +7,9 @@ var wordLetters = Array.from(wordSelection);
 var tempArray = Array(wordSelection.length);
 var missedLetters = Array(0);
 var numberOfMissed = 0;
-function missedOne() {
-    numberOfMissed++
-}
+var numberOfLosses = 0;
+var numberOfWins = 0;
+
 
 console.log(missedLetters);
 
@@ -18,10 +18,18 @@ console.log(missedLetters);
 console.log(wordSelection);        
 console.log(wordLetters);
 
+
+
+
+
+
 /* inserts # of _s into tempArray equal to the word length */
 for(i = 0; i < wordSelection.length; i++) {
     tempArray[i] = "_ ";
 }
+
+
+
 
 
 document.onkeyup = function() { 
@@ -58,7 +66,10 @@ document.onkeyup = function() {
                     }
                     else {
                         document.querySelector(".display").innerHTML = guessProgress;
+                        numberOfWins++;
+                        document.querySelector(".numberOfWins").innerHTML = numberOfWins;
                         setTimeout(alert("YOU WIN"), 1000);
+                        
                     }
                 }
             }
@@ -72,10 +83,13 @@ document.onkeyup = function() {
             else {
                 missedLetters.push(keyPress);
                 numberOfMissed++;
-                var numberOfMissed2 = numberOfMissed;
-                console.log(numberOfMissed2);
+                document.querySelector(".numberOfMissed").innerHTML = numberOfMissed;
                 if (numberOfMissed < 10) {}
-                else {alert("YOU LOSE")};
+                else {
+                    alert("YOU LOSE");
+                    numberOfLosses++;
+                    document.querySelector(".numberOfLosses").innerHTML = numberOfLosses;
+                };
             };
             var missedDisplay = missedLetters.join(", ");
             document.querySelector(".missed").innerHTML = missedDisplay; 
