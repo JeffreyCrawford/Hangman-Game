@@ -49,6 +49,9 @@ document.onkeyup = function() {
                     else {
                         document.querySelector(".display").innerHTML = guessProgress;
                         numberOfWins++;
+                        
+                        /* here I am trying to get it to fill in the final missed letter before alerting "you win", but I can't 
+                        get it to work correctly */
                         document.querySelector(".numberOfWins").innerHTML = numberOfWins;
                         setTimeout(alert("YOU WIN"), 1000);
                         
