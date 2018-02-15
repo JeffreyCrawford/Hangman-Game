@@ -11,26 +11,15 @@ var numberOfLosses = 0;
 var numberOfWins = 0;
 
 
-console.log(missedLetters);
-
-
-    
-console.log(wordSelection);        
-console.log(wordLetters);
-
-
-
-
-
-
 /* inserts # of _s into tempArray equal to the word length */
 for(i = 0; i < wordSelection.length; i++) {
     tempArray[i] = "_ ";
 }
+var beginGuessProgress = tempArray.join("");
 
-
-
-
+/* I don't understand why the following code isn't displaying when the page is loaded. */
+/* console.log(beginGuessProgress);
+document.getElementById(".display").innerHTML = beginGuessProgress; */
 
 document.onkeyup = function() { 
     /* pulls the keypress */
